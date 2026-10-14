@@ -54,5 +54,15 @@
     - [独立部署](/docs/guide-zh-CN/web-deploy.md)
 
 
+- 项目分析（代码级）
+
+    - [项目总览](/ai/PROJECT_ANALYSIS.md)
+    - [后端架构详解](/ai/ARCHITECTURE-BACKEND.md)
+    - [前端架构详解](/ai/ARCHITECTURE-FRONTEND.md)
+    - [业务模块地图](/ai/MODULES.md)
+    - [插件体系与代码生成](/ai/ADDONS-AND-CODEGEN.md)
+    - [AI 开发规范](/AGENTS.md)
+
+
 - 附录
     - [网址收录](/docs/guide-zh-CN/append-website.md)

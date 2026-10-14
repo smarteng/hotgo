@@ -5,6 +5,75 @@
 
 ---
 
+## 开发环境与常用命令
+
+### 环境要求
+
+- Go 1.24+（module 名 `hotgo`）
+- Node.js 16+，包管理器 **pnpm**
+- GoFrame CLI（`gf` 命令行工具，通过 `make cli.install` 自动安装）
+- MySQL 数据库
+
+### 初始化配置
+
+```bash
+# 后端：复制配置文件并编辑数据库连接等信息
+cd server
+cp manifest/config/config.example.yaml manifest/config/config.yaml
+# 编辑 config.yaml 填写数据库、Redis 等连接信息
+
+# 前端：安装依赖
+cd web
+pnpm install
+```
+
+### 后端命令（在 `server/` 目录下执行）
+
+| 命令 | 说明 |
+|------|------|
+| `make http` | 热编译启动 HTTP 服务（端口 8000） |
+| `make all` | 热编译启动所有服务（HTTP + Queue + Cron） |
+| `make queue` | 仅启动消息队列消费者 |
+| `make cron` | 仅启动定时任务 |
+| `make dao` | 从数据库生成 DAO/DO/Entity 代码（修改表结构后必须执行） |
+| `make service` | 从 logic 层生成 service 接口代码 |
+| `make lint` | 运行 golangci-lint 代码质量检查 |
+| `make build` | 一键编译（前端构建 + 静态资源拷贝 + Go 编译） |
+| `make cli` | 安装/更新 GoFrame CLI 工具 |
+| `make refresh` | 刷新 Casbin 权限策略 |
+| `make clear` | 清理 Casbin 权限策略 |
+
+**直接运行 Go（不使用 make）：**
+
+```bash
+go run main.go http     # 启动 HTTP 服务
+go run main.go all      # 启动所有服务
+```
+
+### 前端命令（在 `web/` 目录下执行）
+
+| 命令 | 说明 |
+|------|------|
+| `pnpm run dev` | 启动开发服务器（端口 8001，自动代理到后端 8000） |
+| `pnpm run build` | 生产构建 |
+| `pnpm run lint:eslint` | ESLint 检查并自动修复 |
+| `pnpm run lint:prettier` | Prettier 格式化 |
+| `pnpm run lint:stylelint` | 样式文件检查 |
+| `pnpm run preview` | 构建后预览 |
+
+### 典型开发流程
+
+1. 终端 1：`cd server && make http`（后端热重载）
+2. 终端 2：`cd web && pnpm run dev`（前端热重载）
+3. 浏览器访问 `http://localhost:8001`（前端代理到后端）
+4. 修改数据库表结构后：`cd server && make dao` 重新生成 DAO 代码
+
+### 代码生成工作流
+
+修改数据库表 → `make dao`（生成 entity/do/dao） → 手写 sysin model → 手写 logic → 手写 controller → 手写 api → 注册路由。也可使用后台「代码生成」功能（系统设置 → 代码生成器）自动生成完整 CRUD 骨架。
+
+---
+
 ## 技术栈
 
 | 层 | 技术                                                             |
