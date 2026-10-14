@@ -61,6 +61,7 @@
     - [前端架构详解](/ai/ARCHITECTURE-FRONTEND.md)
     - [业务模块地图](/ai/MODULES.md)
     - [插件体系与代码生成](/ai/ADDONS-AND-CODEGEN.md)
+    - [GoFrame 实战指南](/ai/GOFRAME-GUIDE.md)
     - [AI 开发规范](/AGENTS.md)
 
 
