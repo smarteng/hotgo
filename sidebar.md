@@ -62,6 +62,7 @@
     - [业务模块地图](/ai/MODULES.md)
     - [插件体系与代码生成](/ai/ADDONS-AND-CODEGEN.md)
     - [GoFrame 实战指南](/ai/GOFRAME-GUIDE.md)
+    - [定时任务与消息队列](/ai/CRON-AND-QUEUE.md)
     - [AI 开发规范](/AGENTS.md)
 
 
